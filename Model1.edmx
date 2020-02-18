@@ -1,0 +1,1470 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Customer_id" Type="int" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="Date" Type="varchar" MaxLength="10" />
+          <Property Name="Amount" Type="varchar" MaxLength="20" />
+          <Property Name="Payment_gateway" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Cabinet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Room_id" Type="int" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="Shop_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Item_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Item_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Category " Type="varchar" MaxLength="50" />
+          <Property Name="Subcategory" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Item_generation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bill_id" Type="int" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="Price" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Shop_id" Type="int" />
+          <Property Name="Mall_id" Type="int" />
+          <Property Name="Category_id" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Price" Type="float" />
+          <Property Name="ItemName" Type="varchar" MaxLength="50" />
+          <Property Name="Photo" Type="varchar" MaxLength="50" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+          <Property Name="Colour" Type="varchar" MaxLength="50" />
+          <Property Name="Room_id" Type="int" />
+          <Property Name="Rack_id" Type="int" />
+          <Property Name="Cabinet_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Rack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Room_id" Type="int" />
+          <Property Name="Cabinet_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Registration_Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone_no" Type="varchar" MaxLength="50" />
+          <Property Name="User_id" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Registration_Mall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="varchar(max)" />
+          <Property Name="City " Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone_no" Type="varchar" MaxLength="50" />
+          <Property Name="User_id" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Level" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Scheme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mall_id" Type="int" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="Discount" Type="varchar" MaxLength="50" />
+          <Property Name="Schemes" Type="varchar" MaxLength="50" />
+          <Property Name="TimeValidation" Type="varchar" MaxLength="50" />
+          <Property Name="TermsandCondition" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Shipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Bill_id" Type="int" />
+          <Property Name="Customer_id" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="State" Type="varchar" MaxLength="50" />
+          <Property Name="Pincode" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mall_id" Type="int" />
+          <Property Name="Categroy_id" Type="int" />
+          <Property Name="Subcategory_id" Type="int" />
+          <Property Name="Item_id" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Discounts" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Subcategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Category_id" Type="int" />
+          <Property Name="shop_id" Type="int" />
+          <Property Name="Description" Type="varchar(max)" />
+        </EntityType>
+        <Function Name="Delete_Bill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Cabinet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Item_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Itemgen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Rack" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_RegCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_RegMall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Room" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Scheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Shipment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Shop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Delete_Subcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_Bill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Customer_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="Amount" Type="varchar" Mode="In" />
+          <Parameter Name="Payment_gateway" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Cabinet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Room_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Shop_Id" Type="int" Mode="In" />
+          <Parameter Name="CategoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Shop_Id" Type="int" Mode="In" />
+          <Parameter Name="Mall_Id" Type="int" Mode="In" />
+          <Parameter Name="Category_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Itemname" Type="varchar" Mode="In" />
+          <Parameter Name="Photo" Type="varchar" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="Colour" Type="varchar" Mode="In" />
+          <Parameter Name="Room_Id" Type="int" Mode="In" />
+          <Parameter Name="Rack_Id" Type="int" Mode="In" />
+          <Parameter Name="Cabinet_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_Item_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Item_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Subcategory" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Itemgen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Bill_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="insert_Rack" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Room_id" Type="int" Mode="In" />
+          <Parameter Name="Cabinet_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Insert_RegCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone_no" Type="varchar" Mode="In" />
+          <Parameter Name="User_id" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_RegMall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone_no" Type="varchar" Mode="In" />
+          <Parameter Name="User_id" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Room" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Level" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Scheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mall_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Discount" Type="varchar" Mode="In" />
+          <Parameter Name="Schemes" Type="varchar" Mode="In" />
+          <Parameter Name="TimeValidation" Type="varchar" Mode="In" />
+          <Parameter Name="TermsandCondition" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Shipment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Bill_id" Type="int" Mode="In" />
+          <Parameter Name="Customer_id" Type="int" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Shop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Mall_id" Type="int" Mode="In" />
+          <Parameter Name="Category_id" Type="int" Mode="In" />
+          <Parameter Name="Subcategory_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Discounts" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Insert_Subcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Category_id" Type="int" Mode="In" />
+          <Parameter Name="shop_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="Procedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="In" />
+          <Parameter Name="param2" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Bill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Cabinet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Item_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Itemgen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Rack" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_RegCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Room" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Scheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Shipment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Shop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Select_Subcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Selecte_REgMall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_Bill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Customer_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Date" Type="varchar" Mode="In" />
+          <Parameter Name="Amount" Type="varchar" Mode="In" />
+          <Parameter Name="Payment_gateway" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Cabinet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Room_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Category" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Shop_Id" Type="int" Mode="In" />
+          <Parameter Name="CategoryName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Item" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Shop_Id" Type="int" Mode="In" />
+          <Parameter Name="Mall_Id" Type="int" Mode="In" />
+          <Parameter Name="Category_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="ItemName" Type="varchar" Mode="In" />
+          <Parameter Name="Photo" Type="varchar" Mode="In" />
+          <Parameter Name="Size" Type="varchar" Mode="In" />
+          <Parameter Name="Colour" Type="varchar" Mode="In" />
+          <Parameter Name="Room_Id" Type="int" Mode="In" />
+          <Parameter Name="Rack_Id" Type="int" Mode="In" />
+          <Parameter Name="Cabinet_Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Update_Item_Admin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Item_Name" Type="varchar" Mode="In" />
+          <Parameter Name="Category" Type="varchar" Mode="In" />
+          <Parameter Name="Subcategory" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Itemgen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Bill_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="varchar" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="update_Rack" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Room_id" Type="int" Mode="In" />
+          <Parameter Name="Cabinet_int" Type="int" Mode="In" />
+        </Function>
+        <Function Name="update_RegCustomer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone_no" Type="varchar" Mode="In" />
+          <Parameter Name="User_id" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_RegMall" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar(max)" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Email" Type="varchar" Mode="In" />
+          <Parameter Name="Phone_no" Type="varchar" Mode="In" />
+          <Parameter Name="User_id" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Room" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Level" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Scheme" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Mall_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Discount" Type="varchar" Mode="In" />
+          <Parameter Name="Schemes" Type="varchar" Mode="In" />
+          <Parameter Name="TimeValidation" Type="varchar" Mode="In" />
+          <Parameter Name="TermsandCondition" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Shipment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Bill_id" Type="int" Mode="In" />
+          <Parameter Name="Customer_id" Type="int" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="State" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Shop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Mall_id" Type="int" Mode="In" />
+          <Parameter Name="Category_id" Type="int" Mode="In" />
+          <Parameter Name="Subcategory_id" Type="int" Mode="In" />
+          <Parameter Name="Item_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Discounts" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Update_Subcat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+          <Parameter Name="Category_id" Type="int" Mode="In" />
+          <Parameter Name="shop_id" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar(max)" Mode="In" />
+        </Function>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cabinet" EntityType="Self.Cabinet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_Admin" EntityType="Self.Item_Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item_generation" EntityType="Self.Item_generation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rack" EntityType="Self.Rack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration_Customer" EntityType="Self.Registration_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registration_Mall" EntityType="Self.Registration_Mall" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Scheme" EntityType="Self.Scheme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shipment" EntityType="Self.Shipment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shop" EntityType="Self.shop" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subcategory" EntityType="Self.Subcategory" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bill">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_id" Type="Int32" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Payment_gateway" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Cabinet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Room_id" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Shop_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Item_Admin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Item_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subcategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Item_generation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bill_id" Type="Int32" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Shop_id" Type="Int32" />
+          <Property Name="Mall_id" Type="Int32" />
+          <Property Name="Category_id" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="ItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Colour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Room_id" Type="Int32" />
+          <Property Name="Rack_id" Type="Int32" />
+          <Property Name="Cabinet_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Rack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Room_id" Type="Int32" />
+          <Property Name="Cabinet_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Registration_Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="User_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Registration_Mall">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="City_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="User_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_no" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Level" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Shipment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Bill_id" Type="Int32" />
+          <Property Name="Customer_id" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mall_id" Type="Int32" />
+          <Property Name="Categroy_id" Type="Int32" />
+          <Property Name="Subcategory_id" Type="Int32" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Discounts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Subcategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category_id" Type="Int32" />
+          <Property Name="shop_id" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bills" EntityType="Self.Bill" />
+          <EntitySet Name="Cabinets" EntityType="Self.Cabinet" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Item_Admin" EntityType="Self.Item_Admin" />
+          <EntitySet Name="Item_generation" EntityType="Self.Item_generation" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Racks" EntityType="Self.Rack" />
+          <EntitySet Name="Registration_Customer" EntityType="Self.Registration_Customer" />
+          <EntitySet Name="Registration_Mall" EntityType="Self.Registration_Mall" />
+          <EntitySet Name="Rooms" EntityType="Self.Room" />
+          <EntitySet Name="Shipments" EntityType="Self.Shipment" />
+          <EntitySet Name="shops" EntityType="Self.shop" />
+          <EntitySet Name="Subcategories" EntityType="Self.Subcategory" />
+          <FunctionImport Name="Delete_Bill">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Cabinet">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Category">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Item">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Item_Admin">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Itemgen">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Rack">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_RegCustomer">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_RegMall">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Room">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Scheme">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Shipment">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Shop">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Delete_Subcat">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Bill">
+            <Parameter Name="Customer_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="Amount" Mode="In" Type="String" />
+            <Parameter Name="Payment_gateway" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Cabinet">
+            <Parameter Name="Room_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Category">
+            <Parameter Name="Shop_Id" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Item">
+            <Parameter Name="Shop_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Mall_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Category_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Itemname" Mode="In" Type="String" />
+            <Parameter Name="Photo" Mode="In" Type="String" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="Colour" Mode="In" Type="String" />
+            <Parameter Name="Room_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Rack_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Cabinet_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Item_Admin">
+            <Parameter Name="Item_Name" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Subcategory" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Itemgen">
+            <Parameter Name="Bill_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="insert_Rack">
+            <Parameter Name="Room_id" Mode="In" Type="Int32" />
+            <Parameter Name="Cabinet_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_RegCustomer">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_no" Mode="In" Type="String" />
+            <Parameter Name="User_id" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_RegMall">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_no" Mode="In" Type="String" />
+            <Parameter Name="User_id" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Room">
+          <Parameter Name="Level" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Scheme">
+            <Parameter Name="Mall_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Discount" Mode="In" Type="String" />
+            <Parameter Name="Schemes" Mode="In" Type="String" />
+            <Parameter Name="TimeValidation" Mode="In" Type="String" />
+            <Parameter Name="TermsandCondition" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Shipment">
+            <Parameter Name="Bill_id" Mode="In" Type="Int32" />
+            <Parameter Name="Customer_id" Mode="In" Type="Int32" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Pincode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Shop">
+            <Parameter Name="Mall_id" Mode="In" Type="Int32" />
+            <Parameter Name="Category_id" Mode="In" Type="Int32" />
+            <Parameter Name="Subcategory_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Discounts" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Insert_Subcat">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Category_id" Mode="In" Type="Int32" />
+            <Parameter Name="shop_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Procedure" ReturnType="Collection(Database1Model.Procedure_Result)">
+            <Parameter Name="param1" Mode="In" Type="Int32" />
+            <Parameter Name="param2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Bill" ReturnType="Collection(Database1Model.Select_Bill_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Cabinet" ReturnType="Collection(Database1Model.Select_Cabinet_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Category" ReturnType="Collection(Database1Model.Select_Category_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Item" ReturnType="Collection(Database1Model.Select_Item_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Item_Admin" ReturnType="Collection(Database1Model.Select_Item_Admin_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Itemgen" ReturnType="Collection(Database1Model.Select_Itemgen_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Rack" ReturnType="Collection(Database1Model.Select_Rack_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_RegCustomer" ReturnType="Collection(Database1Model.Select_RegCustomer_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Room" ReturnType="Collection(Database1Model.Select_Room_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Scheme" ReturnType="Collection(Database1Model.Select_Scheme_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Shipment" ReturnType="Collection(Database1Model.Select_Shipment_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Shop" ReturnType="Collection(Database1Model.Select_Shop_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Select_Subcat" ReturnType="Collection(Database1Model.Select_Subcat_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Selecte_REgMall" ReturnType="Collection(Database1Model.Selecte_REgMall_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Bill">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Customer_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Date" Mode="In" Type="String" />
+            <Parameter Name="Amount" Mode="In" Type="String" />
+            <Parameter Name="Payment_gateway" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Cabinet">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Room_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Category">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Shop_Id" Mode="In" Type="Int32" />
+            <Parameter Name="CategoryName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Item">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Shop_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Mall_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Category_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="ItemName" Mode="In" Type="String" />
+            <Parameter Name="Photo" Mode="In" Type="String" />
+            <Parameter Name="Size" Mode="In" Type="String" />
+            <Parameter Name="Colour" Mode="In" Type="String" />
+            <Parameter Name="Room_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Rack_Id" Mode="In" Type="Int32" />
+            <Parameter Name="Cabinet_Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Item_Admin">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_Name" Mode="In" Type="String" />
+            <Parameter Name="Category" Mode="In" Type="String" />
+            <Parameter Name="Subcategory" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Itemgen">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Bill_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="update_Rack">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Room_id" Mode="In" Type="Int32" />
+            <Parameter Name="Cabinet_int" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="update_RegCustomer">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_no" Mode="In" Type="String" />
+            <Parameter Name="User_id" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_RegMall">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Phone_no" Mode="In" Type="String" />
+            <Parameter Name="User_id" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Room">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Level" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Shipment">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Bill_id" Mode="In" Type="Int32" />
+            <Parameter Name="Customer_id" Mode="In" Type="Int32" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="City" Mode="In" Type="String" />
+            <Parameter Name="State" Mode="In" Type="String" />
+            <Parameter Name="Pincode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Shop">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Mall_id" Mode="In" Type="Int32" />
+            <Parameter Name="Category_id" Mode="In" Type="Int32" />
+            <Parameter Name="Subcategory_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Discounts" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Update_Subcat">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="Category_id" Mode="In" Type="Int32" />
+            <Parameter Name="shop_id" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Schemes" EntityType="Database1Model.Scheme" />
+          <FunctionImport Name="Update_Scheme">
+            <Parameter Name="Id" Mode="In" Type="Int32" />
+            <Parameter Name="Mall_id" Mode="In" Type="Int32" />
+            <Parameter Name="Item_id" Mode="In" Type="Int32" />
+            <Parameter Name="Discount" Mode="In" Type="String" />
+            <Parameter Name="Schemes" Mode="In" Type="String" />
+            <Parameter Name="TimeValidation" Mode="In" Type="String" />
+            <Parameter Name="TermsandCondition" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Procedure_Result">
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Bill_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Customer_id" Nullable="true" />
+          <Property Type="Int32" Name="Item_id" Nullable="true" />
+          <Property Type="String" Name="Date" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Amount" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Payment_gateway" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Cabinet_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Room_id" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Category_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Shop_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Item_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Shop_id" Nullable="true" />
+          <Property Type="Int32" Name="Mall_id" Nullable="true" />
+          <Property Type="Int32" Name="Category_id" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Photo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Size" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Colour" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Room_id" Nullable="true" />
+          <Property Type="Int32" Name="Rack_id" Nullable="true" />
+          <Property Type="Int32" Name="Cabinet_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Item_Admin_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Item_Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category_" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Subcategory" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Itemgen_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Bill_id" Nullable="true" />
+          <Property Type="Int32" Name="Item_id" Nullable="true" />
+          <Property Type="String" Name="Price" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_Rack_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Room_id" Nullable="true" />
+          <Property Type="Int32" Name="Cabinet_id" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Select_RegCustomer_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone_no" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="User_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Room_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Level" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="Select_Scheme_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Mall_id" Nullable="true" />
+          <Property Type="Int32" Name="Item_id" Nullable="true" />
+          <Property Type="String" Name="Discount" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Schemes" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="TimeValidation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Terms__and__Condition" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Shipment_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Bill_id" Nullable="true" />
+          <Property Type="Int32" Name="Customer_id" Nullable="true" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Shop_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Mall_id" Nullable="true" />
+          <Property Type="Int32" Name="Categroy_id" Nullable="true" />
+          <Property Type="Int32" Name="Subcategory_id" Nullable="true" />
+          <Property Type="Int32" Name="Item_id" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+          <Property Type="String" Name="Discounts" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Select_Subcat_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Category_id" Nullable="true" />
+          <Property Type="Int32" Name="shop_id" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Selecte_REgMall_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Address" Nullable="true" />
+          <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone_no" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="User_id" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="Scheme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mall_id" Type="Int32" />
+          <Property Name="Item_id" Type="Int32" />
+          <Property Name="Discount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Schemes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeValidation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TermsandCondition" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Bills">
+            <EntityTypeMapping TypeName="Database1Model.Bill">
+              <MappingFragment StoreEntitySet="Bill">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Payment_gateway" ColumnName="Payment_gateway" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cabinets">
+            <EntityTypeMapping TypeName="Database1Model.Cabinet">
+              <MappingFragment StoreEntitySet="Cabinet">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="Database1Model.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Shop_id" ColumnName="Shop_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_Admin">
+            <EntityTypeMapping TypeName="Database1Model.Item_Admin">
+              <MappingFragment StoreEntitySet="Item_Admin">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="Category_" ColumnName="Category " />
+                <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Item_generation">
+            <EntityTypeMapping TypeName="Database1Model.Item_generation">
+              <MappingFragment StoreEntitySet="Item_generation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bill_id" ColumnName="Bill_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="Database1Model.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Shop_id" ColumnName="Shop_id" />
+                <ScalarProperty Name="Mall_id" ColumnName="Mall_id" />
+                <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Rack_id" ColumnName="Rack_id" />
+                <ScalarProperty Name="Cabinet_id" ColumnName="Cabinet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Racks">
+            <EntityTypeMapping TypeName="Database1Model.Rack">
+              <MappingFragment StoreEntitySet="Rack">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Cabinet_id" ColumnName="Cabinet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registration_Customer">
+            <EntityTypeMapping TypeName="Database1Model.Registration_Customer">
+              <MappingFragment StoreEntitySet="Registration_Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_no" ColumnName="Phone_no" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registration_Mall">
+            <EntityTypeMapping TypeName="Database1Model.Registration_Mall">
+              <MappingFragment StoreEntitySet="Registration_Mall">
+                <ScalarProperty Name="Phone_no" ColumnName="Phone_no" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City_" ColumnName="City " />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rooms">
+            <EntityTypeMapping TypeName="Database1Model.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shipments">
+            <EntityTypeMapping TypeName="Database1Model.Shipment">
+              <MappingFragment StoreEntitySet="Shipment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bill_id" ColumnName="Bill_id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shops">
+            <EntityTypeMapping TypeName="Database1Model.shop">
+              <MappingFragment StoreEntitySet="shop">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mall_id" ColumnName="Mall_id" />
+                <ScalarProperty Name="Categroy_id" ColumnName="Categroy_id" />
+                <ScalarProperty Name="Subcategory_id" ColumnName="Subcategory_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Discounts" ColumnName="Discounts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subcategories">
+            <EntityTypeMapping TypeName="Database1Model.Subcategory">
+              <MappingFragment StoreEntitySet="Subcategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Delete_Bill" FunctionName="Database1Model.Store.Delete_Bill" />
+          <FunctionImportMapping FunctionImportName="Delete_Cabinet" FunctionName="Database1Model.Store.Delete_Cabinet" />
+          <FunctionImportMapping FunctionImportName="Delete_Category" FunctionName="Database1Model.Store.Delete_Category" />
+          <FunctionImportMapping FunctionImportName="Delete_Item" FunctionName="Database1Model.Store.Delete_Item" />
+          <FunctionImportMapping FunctionImportName="Delete_Item_Admin" FunctionName="Database1Model.Store.Delete_Item_Admin" />
+          <FunctionImportMapping FunctionImportName="Delete_Itemgen" FunctionName="Database1Model.Store.Delete_Itemgen" />
+          <FunctionImportMapping FunctionImportName="Delete_Rack" FunctionName="Database1Model.Store.Delete_Rack" />
+          <FunctionImportMapping FunctionImportName="Delete_RegCustomer" FunctionName="Database1Model.Store.Delete_RegCustomer" />
+          <FunctionImportMapping FunctionImportName="Delete_RegMall" FunctionName="Database1Model.Store.Delete_RegMall" />
+          <FunctionImportMapping FunctionImportName="Delete_Room" FunctionName="Database1Model.Store.Delete_Room" />
+          <FunctionImportMapping FunctionImportName="Delete_Scheme" FunctionName="Database1Model.Store.Delete_Scheme" />
+          <FunctionImportMapping FunctionImportName="Delete_Shipment" FunctionName="Database1Model.Store.Delete_Shipment" />
+          <FunctionImportMapping FunctionImportName="Delete_Shop" FunctionName="Database1Model.Store.Delete_Shop" />
+          <FunctionImportMapping FunctionImportName="Delete_Subcat" FunctionName="Database1Model.Store.Delete_Subcat" />
+          <FunctionImportMapping FunctionImportName="Insert_Bill" FunctionName="Database1Model.Store.Insert_Bill" />
+          <FunctionImportMapping FunctionImportName="Insert_Cabinet" FunctionName="Database1Model.Store.Insert_Cabinet" />
+          <FunctionImportMapping FunctionImportName="Insert_Category" FunctionName="Database1Model.Store.Insert_Category" />
+          <FunctionImportMapping FunctionImportName="Insert_Item" FunctionName="Database1Model.Store.Insert_Item" />
+          <FunctionImportMapping FunctionImportName="Insert_Item_Admin" FunctionName="Database1Model.Store.Insert_Item_Admin" />
+          <FunctionImportMapping FunctionImportName="Insert_Itemgen" FunctionName="Database1Model.Store.Insert_Itemgen" />
+          <FunctionImportMapping FunctionImportName="insert_Rack" FunctionName="Database1Model.Store.insert_Rack" />
+          <FunctionImportMapping FunctionImportName="Insert_RegCustomer" FunctionName="Database1Model.Store.Insert_RegCustomer" />
+          <FunctionImportMapping FunctionImportName="Insert_RegMall" FunctionName="Database1Model.Store.Insert_RegMall" />
+          <FunctionImportMapping FunctionImportName="Insert_Room" FunctionName="Database1Model.Store.Insert_Room" />
+          <FunctionImportMapping FunctionImportName="Insert_Scheme" FunctionName="Database1Model.Store.Insert_Scheme" />
+          <FunctionImportMapping FunctionImportName="Insert_Shipment" FunctionName="Database1Model.Store.Insert_Shipment" />
+          <FunctionImportMapping FunctionImportName="Insert_Shop" FunctionName="Database1Model.Store.Insert_Shop" />
+          <FunctionImportMapping FunctionImportName="Insert_Subcat" FunctionName="Database1Model.Store.Insert_Subcat" />
+          <FunctionImportMapping FunctionImportName="Procedure" FunctionName="Database1Model.Store.Procedure">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Procedure_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Bill" FunctionName="Database1Model.Store.Select_Bill">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Bill_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Payment_gateway" ColumnName="Payment_gateway" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Cabinet" FunctionName="Database1Model.Store.Select_Cabinet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Cabinet_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Category" FunctionName="Database1Model.Store.Select_Category">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Category_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Shop_id" ColumnName="Shop_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Item" FunctionName="Database1Model.Store.Select_Item">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Item_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Shop_id" ColumnName="Shop_id" />
+                <ScalarProperty Name="Mall_id" ColumnName="Mall_id" />
+                <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Rack_id" ColumnName="Rack_id" />
+                <ScalarProperty Name="Cabinet_id" ColumnName="Cabinet_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Item_Admin" FunctionName="Database1Model.Store.Select_Item_Admin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Item_Admin_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Item_Name" ColumnName="Item_Name" />
+                <ScalarProperty Name="Category_" ColumnName="Category " />
+                <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Itemgen" FunctionName="Database1Model.Store.Select_Itemgen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Itemgen_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bill_id" ColumnName="Bill_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Rack" FunctionName="Database1Model.Store.Select_Rack">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Rack_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Room_id" ColumnName="Room_id" />
+                <ScalarProperty Name="Cabinet_id" ColumnName="Cabinet_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_RegCustomer" FunctionName="Database1Model.Store.Select_RegCustomer">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_RegCustomer_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_no" ColumnName="Phone_no" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Room" FunctionName="Database1Model.Store.Select_Room">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Room_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Scheme" FunctionName="Database1Model.Store.Select_Scheme">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Scheme_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mall_id" ColumnName="Mall_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Schemes" ColumnName="Schemes" />
+                <ScalarProperty Name="TimeValidation" ColumnName="TimeValidation" />
+                <ScalarProperty Name="Terms__and__Condition" ColumnName="Terms _and _Condition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Shipment" FunctionName="Database1Model.Store.Select_Shipment">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Shipment_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Bill_id" ColumnName="Bill_id" />
+                <ScalarProperty Name="Customer_id" ColumnName="Customer_id" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Shop" FunctionName="Database1Model.Store.Select_Shop">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Shop_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mall_id" ColumnName="Mall_id" />
+                <ScalarProperty Name="Categroy_id" ColumnName="Categroy_id" />
+                <ScalarProperty Name="Subcategory_id" ColumnName="Subcategory_id" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Discounts" ColumnName="Discounts" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Select_Subcat" FunctionName="Database1Model.Store.Select_Subcat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Select_Subcat_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Category_id" ColumnName="Category_id" />
+                <ScalarProperty Name="shop_id" ColumnName="shop_id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Selecte_REgMall" FunctionName="Database1Model.Store.Selecte_REgMall">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Database1Model.Selecte_REgMall_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone_no" ColumnName="Phone_no" />
+                <ScalarProperty Name="User_id" ColumnName="User_id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Update_Bill" FunctionName="Database1Model.Store.Update_Bill" />
+          <FunctionImportMapping FunctionImportName="Update_Cabinet" FunctionName="Database1Model.Store.Update_Cabinet" />
+          <FunctionImportMapping FunctionImportName="Update_Category" FunctionName="Database1Model.Store.Update_Category" />
+          <FunctionImportMapping FunctionImportName="Update_Item" FunctionName="Database1Model.Store.Update_Item" />
+          <FunctionImportMapping FunctionImportName="Update_Item_Admin" FunctionName="Database1Model.Store.Update_Item_Admin" />
+          <FunctionImportMapping FunctionImportName="Update_Itemgen" FunctionName="Database1Model.Store.Update_Itemgen" />
+          <FunctionImportMapping FunctionImportName="update_Rack" FunctionName="Database1Model.Store.update_Rack" />
+          <FunctionImportMapping FunctionImportName="update_RegCustomer" FunctionName="Database1Model.Store.update_RegCustomer" />
+          <FunctionImportMapping FunctionImportName="Update_RegMall" FunctionName="Database1Model.Store.Update_RegMall" />
+          <FunctionImportMapping FunctionImportName="Update_Room" FunctionName="Database1Model.Store.Update_Room" />
+          <FunctionImportMapping FunctionImportName="Update_Shipment" FunctionName="Database1Model.Store.Update_Shipment" />
+          <FunctionImportMapping FunctionImportName="Update_Shop" FunctionName="Database1Model.Store.Update_Shop" />
+          <FunctionImportMapping FunctionImportName="Update_Subcat" FunctionName="Database1Model.Store.Update_Subcat" />
+          <EntitySetMapping Name="Schemes">
+            <EntityTypeMapping TypeName="Database1Model.Scheme">
+              <MappingFragment StoreEntitySet="Scheme">
+                <ScalarProperty Name="TermsandCondition" ColumnName="TermsandCondition" />
+                <ScalarProperty Name="TimeValidation" ColumnName="TimeValidation" />
+                <ScalarProperty Name="Schemes" ColumnName="Schemes" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Item_id" ColumnName="Item_id" />
+                <ScalarProperty Name="Mall_id" ColumnName="Mall_id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="Update_Scheme" FunctionName="Database1Model.Store.Update_Scheme" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
